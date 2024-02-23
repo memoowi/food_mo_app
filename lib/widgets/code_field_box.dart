@@ -59,13 +59,13 @@ class _CodeFieldBoxState extends State<CodeFieldBox> {
           children: [
             Text(
               'Order food'.toUpperCase(),
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 16.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Row(
               children: [
                 Expanded(
@@ -75,35 +75,34 @@ class _CodeFieldBoxState extends State<CodeFieldBox> {
                     onChanged: (String text) {
                       codeController.text = text.toUpperCase();
                     },
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                     ),
                     decoration: InputDecoration(
                       hintText: 'Enter Restaurant Code',
-                      hintStyle: TextStyle(color: Colors.white54),
+                      hintStyle: const TextStyle(color: Colors.white54),
                       filled: true,
                       fillColor: Colors.white24,
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           width: 0.0,
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           width: 0.0,
                         ),
                       ),
-                      prefixIcon: Icon(Icons.code),
+                      prefixIcon: const Icon(Icons.code),
                       prefixIconColor: Colors.white,
                     ),
                   ),
                 ),
-                SizedBox(width: 10.0),
+                const SizedBox(width: 10.0),
                 ElevatedButton(
                   onPressed: submitCode,
-                  child: Icon(Icons.send),
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
@@ -112,9 +111,10 @@ class _CodeFieldBoxState extends State<CodeFieldBox> {
                     foregroundColor: Colors.black,
                     surfaceTintColor: Colors.white,
                     elevation: 0.0,
-                    minimumSize: Size(60, 60),
+                    minimumSize: const Size(60, 60),
                     padding: EdgeInsets.zero,
                   ),
+                  child: const Icon(Icons.send),
                 ),
               ],
             ),
@@ -124,11 +124,11 @@ class _CodeFieldBoxState extends State<CodeFieldBox> {
                   padding: const EdgeInsets.only(top: 8.0),
                   child: Row(
                     children: [
-                      Icon(Icons.error_outline, color: Colors.red),
-                      SizedBox(width: 10.0),
+                      const Icon(Icons.error_outline, color: Colors.red),
+                      const SizedBox(width: 10.0),
                       Text(
                         provider.codeNotFound!,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                         ),
                       ),

@@ -45,7 +45,6 @@ class _LoginPageState extends State<LoginPage> {
     if (formKey.currentState!.validate()) {
       final username = usernameController.text;
       final password = passwordController.text;
-      print('Username: $username, Password: $password');
       Provider.of<AuthProvider>(context, listen: false)
           .login(username, password)
           .then((value) {
@@ -81,8 +80,8 @@ class _LoginPageState extends State<LoginPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            HeroLogin(isLoginPage: true),
-            SizedBox(height: 40.0),
+            const HeroLogin(isLoginPage: true),
+            const SizedBox(height: 40.0),
             Form(
               key: formKey,
               child: Padding(
@@ -92,8 +91,8 @@ class _LoginPageState extends State<LoginPage> {
                     Consumer(builder: (context, AuthProvider provider, _) {
                       if (provider.errorMessage != null) {
                         return Container(
-                          margin: EdgeInsets.only(bottom: 20.0),
-                          padding: EdgeInsets.all(10.0),
+                          margin: const EdgeInsets.only(bottom: 20.0),
+                          padding: const EdgeInsets.all(10.0),
                           width: double.infinity,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
@@ -101,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           child: Text(
                             provider.errorMessage.toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 16.0,
                               fontWeight: FontWeight.w700,
                               color: Colors.white,
@@ -117,32 +116,33 @@ class _LoginPageState extends State<LoginPage> {
                       validator: usernameValidator,
                       decoration: InputDecoration(
                         hintText: 'Username or Email',
-                        hintStyle: TextStyle(color: Colors.grey),
-                        prefixIcon: Icon(CupertinoIcons.person_alt_circle_fill),
+                        hintStyle: const TextStyle(color: Colors.grey),
+                        prefixIcon:
+                            const Icon(CupertinoIcons.person_alt_circle_fill),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             width: 2.0,
                             style: BorderStyle.solid,
                           ),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.red,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     TextFormField(
                       controller: passwordController,
                       obscureText: obscureText,
                       validator: passwordValidator,
                       decoration: InputDecoration(
                         hintText: 'Password',
-                        hintStyle: TextStyle(color: Colors.grey),
-                        prefixIcon: Icon(CupertinoIcons.lock_circle_fill),
+                        hintStyle: const TextStyle(color: Colors.grey),
+                        prefixIcon: const Icon(CupertinoIcons.lock_circle_fill),
                         suffixIcon: IconButton(
                           onPressed: togglePassword,
                           icon: Icon(
@@ -153,37 +153,37 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             width: 2.0,
                             style: BorderStyle.solid,
                           ),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.red,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(height: 30.0),
+                    const SizedBox(height: 30.0),
                     ElevatedButton(
                       onPressed: login,
-                      child: Text(
-                        'Login',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
                       style: ElevatedButton.styleFrom(
-                        minimumSize: Size(200, 50),
+                        minimumSize: const Size(200, 50),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         backgroundColor: Colors.black,
                         foregroundColor: Colors.white,
                         elevation: 0.0,
+                      ),
+                      child: const Text(
+                        'Login',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                   ],

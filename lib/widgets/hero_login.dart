@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class HeroLogin extends StatelessWidget {
   final bool isLoginPage;
   final String? username;
-  HeroLogin({
+  const HeroLogin({
     super.key,
     this.isLoginPage = false,
     this.username,
@@ -21,24 +21,24 @@ class HeroLogin extends StatelessWidget {
           width: double.infinity,
         ),
         Container(
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           width: double.infinity,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.black54,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                isLoginPage ? 'Welcome to\nFood Mo!' : 'Welcome, ${username}!',
-                style: TextStyle(
+                isLoginPage ? 'Welcome to\nFood Mo!' : 'Welcome, $username!',
+                style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w700,
                   fontSize: 30.0,
                 ),
               ),
               isLoginPage
-                  ? Text(
+                  ? const Text(
                       'Please login to continue!',
                       style: TextStyle(
                         color: Colors.white,

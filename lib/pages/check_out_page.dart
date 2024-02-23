@@ -45,28 +45,28 @@ class _CheckOutPageState extends State<CheckOutPage> {
       appBar: appBar(),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+          margin: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.symmetric(vertical: 5.0),
+                padding: const EdgeInsets.symmetric(vertical: 5.0),
                 color: Colors.black,
                 width: double.infinity,
                 alignment: Alignment.center,
                 child: Text(
                   'Order Summary'.toUpperCase(),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 18.0,
                     color: Colors.white,
                   ),
                 ),
               ),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               orderMenu(context),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               orderTotal(),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {
                   Provider.of<OrderProvider>(context, listen: false)
@@ -76,21 +76,21 @@ class _CheckOutPageState extends State<CheckOutPage> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(2.0),
                   ),
-                  side: BorderSide(color: Colors.black),
+                  side: const BorderSide(color: Colors.black),
                   backgroundColor: Colors.white,
                   foregroundColor: Colors.black,
                   surfaceTintColor: Colors.white,
-                  minimumSize: Size(double.infinity, 60),
+                  minimumSize: const Size(double.infinity, 60),
                   elevation: 0.0,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.shopping_cart_checkout),
-                    SizedBox(width: 10.0),
+                    const Icon(Icons.shopping_cart_checkout),
+                    const SizedBox(width: 10.0),
                     Text(
                       'confirm'.toUpperCase(),
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18.0,
                         fontWeight: FontWeight.w700,
                       ),
@@ -107,14 +107,14 @@ class _CheckOutPageState extends State<CheckOutPage> {
 
   Container orderTotal() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 5.0),
+      padding: const EdgeInsets.symmetric(vertical: 5.0),
       color: Colors.black,
       width: double.infinity,
       alignment: Alignment.center,
       child: Row(
         children: [
-          SizedBox(width: 10.0),
-          Text(
+          const SizedBox(width: 10.0),
+          const Text(
             'Total :',
             style: TextStyle(
               fontWeight: FontWeight.w700,
@@ -125,7 +125,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
           Expanded(
             child: Text(
               'Rp. $_totalSum',
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 24.0,
                 color: Colors.white,
@@ -133,7 +133,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
               textAlign: TextAlign.end,
             ),
           ),
-          SizedBox(width: 10.0),
+          const SizedBox(width: 10.0),
         ],
       ),
     );
@@ -142,8 +142,8 @@ class _CheckOutPageState extends State<CheckOutPage> {
   ListView orderMenu(BuildContext context) {
     return ListView.separated(
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      separatorBuilder: (context, index) => SizedBox(height: 14.0),
+      physics: const NeverScrollableScrollPhysics(),
+      separatorBuilder: (context, index) => const SizedBox(height: 14.0),
       itemCount:
           Provider.of<OrderProvider>(context).orderList['menu_id']!.length,
       itemBuilder: (context, index) {
@@ -154,15 +154,15 @@ class _CheckOutPageState extends State<CheckOutPage> {
                     .orderList['menu_id']![index])
             .first;
         return ListTile(
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
             side: BorderSide(color: Colors.black),
           ),
           leading: Image.network(
-            Config.baseUrl + '/' + item.imageUrl!,
+            '${Config.baseUrl}/${item.imageUrl!}',
             width: 50.0,
             height: 50.0,
             fit: BoxFit.cover,
-            errorBuilder: (context, error, stackTrace) => Icon(
+            errorBuilder: (context, error, stackTrace) => const Icon(
               Icons.error,
             ),
           ),
@@ -174,15 +174,15 @@ class _CheckOutPageState extends State<CheckOutPage> {
                 'Type: ${item.type!.toUpperCase()}',
               ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 8.0),
-                padding: EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
+                margin: const EdgeInsets.symmetric(vertical: 8.0),
+                padding: const EdgeInsets.all(10.0),
+                decoration: const BoxDecoration(
                   color: Colors.black,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'Price :',
                       style: TextStyle(
                         color: Colors.white,
@@ -190,7 +190,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                     ),
                     Text(
                       'Rp. ${item.price!} / each',
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
                       ),
@@ -198,10 +198,10 @@ class _CheckOutPageState extends State<CheckOutPage> {
                   ],
                 ),
               ),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               Row(
                 children: [
-                  Text(
+                  const Text(
                     'Quantity: ',
                   ),
                   Expanded(
@@ -216,16 +216,16 @@ class _CheckOutPageState extends State<CheckOutPage> {
                                       .indexOf(item.id)]
                               .toString()
                           : '0',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 20.0,
                       ),
                     ),
                   ),
-                  SizedBox(width: 10.0),
+                  const SizedBox(width: 10.0),
                   Text(
                     'Rp. ${item.price! * Provider.of<OrderProvider>(context).orderList['quantity']![Provider.of<OrderProvider>(context).orderList['menu_id']!.indexOf(item.id)]}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18.0,
                       fontWeight: FontWeight.w700,
                     ),
@@ -243,7 +243,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
     return AppBar(
       title: Text(
         'Check Out'.toUpperCase(),
-        style: TextStyle(
+        style: const TextStyle(
           fontWeight: FontWeight.w700,
         ),
       ),

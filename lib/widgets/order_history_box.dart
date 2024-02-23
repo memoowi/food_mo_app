@@ -13,8 +13,8 @@ class OrderHistoryBox extends StatelessWidget {
     Provider.of<OrderListProvider>(context, listen: false)
         .getOrderList(context);
     return Container(
-      margin: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
-      padding: EdgeInsets.all(20.0),
+      margin: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+      padding: const EdgeInsets.all(20.0),
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
@@ -27,17 +27,18 @@ class OrderHistoryBox extends StatelessWidget {
         children: [
           Text(
             'Order History'.toUpperCase(),
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.w700,
             ),
           ),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
           Consumer(builder: (context, OrderListProvider provider, child) {
             if (provider.orderList.isNotEmpty) {
               return ListView.separated(
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                separatorBuilder: (context, index) => SizedBox(height: 14.0),
+                physics: const NeverScrollableScrollPhysics(),
+                separatorBuilder: (context, index) =>
+                    const SizedBox(height: 14.0),
                 itemCount: provider.orderList.length,
                 itemBuilder: (context, index) {
                   final sortedOrderList = List.from(provider.orderList);
@@ -53,9 +54,7 @@ class OrderHistoryBox extends StatelessWidget {
                 },
               );
             } else {
-              return Container(
-                child: Text('No Orders'),
-              );
+              return const Text('No Orders');
             }
           })
         ],
@@ -69,15 +68,15 @@ class OrderHistoryBox extends StatelessWidget {
         Navigator.of(context)
             .pushNamed('/order_detail', arguments: orderNumber);
       },
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         side: BorderSide(
           color: Colors.black,
         ),
       ),
-      leading: Icon(Icons.receipt_long),
+      leading: const Icon(Icons.receipt_long),
       title: Text(
         'Order Number: $orderNumber',
-        style: TextStyle(
+        style: const TextStyle(
           fontWeight: FontWeight.w500,
         ),
       ),
@@ -86,11 +85,11 @@ class OrderHistoryBox extends StatelessWidget {
         children: [
           Text('Outlet: $outlet'),
           Text(
-            'Date: ' + DateFormat('EEE, dd MMM yyyy').format(date),
+            'Date: ${DateFormat('EEE, dd MMM yyyy').format(date)}',
           ),
         ],
       ),
-      trailing: Icon(Icons.chevron_right),
+      trailing: const Icon(Icons.chevron_right),
     );
   }
 }

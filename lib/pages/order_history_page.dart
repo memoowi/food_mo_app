@@ -22,7 +22,7 @@ class OrderHistoryPage extends StatelessWidget {
             .getOrder(context, id),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(
                 color: Colors.black,
               ),
@@ -35,8 +35,8 @@ class OrderHistoryPage extends StatelessWidget {
             final order = snapshot.data!;
             return SingleChildScrollView(
               child: Container(
-                margin: EdgeInsets.all(20.0),
-                padding: EdgeInsets.all(20.0),
+                margin: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(20.0),
                 width: double.infinity,
                 decoration: BoxDecoration(
                   border: Border.all(
@@ -51,7 +51,7 @@ class OrderHistoryPage extends StatelessWidget {
                       children: [
                         Text(
                           'Order Number: ${order.data!.id}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 18.0,
                           ),
@@ -60,7 +60,7 @@ class OrderHistoryPage extends StatelessWidget {
                           DateFormat('EEE, dd MMM yyyy').format(
                             order.data!.createdAt!,
                           ),
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 14.0,
                           ),
@@ -73,24 +73,24 @@ class OrderHistoryPage extends StatelessWidget {
                     Text(
                       'Order Status: ${order.data!.status!.toUpperCase()}',
                     ),
-                    SizedBox(height: 10.0),
+                    const SizedBox(height: 10.0),
                     Container(
-                      padding: EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(10.0),
                       width: double.infinity,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.black,
                       ),
                       child: Column(
                         children: [
-                          Text(
+                          const Text(
                             'Outlet Details',
                             style: TextStyle(
                               color: Colors.white,
                             ),
                           ),
-                          SizedBox(height: 10.0),
+                          const SizedBox(height: 10.0),
                           Container(
-                            padding: EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(10.0),
                             width: double.infinity,
                             decoration: BoxDecoration(
                               border: Border.all(
@@ -102,7 +102,7 @@ class OrderHistoryPage extends StatelessWidget {
                               children: [
                                 Text(
                                   '${order.data!.outlet!.name}',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 18.0,
                                     fontWeight: FontWeight.w700,
@@ -110,19 +110,19 @@ class OrderHistoryPage extends StatelessWidget {
                                 ),
                                 Text(
                                   '${order.data!.outlet!.address}',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
                                   ),
                                 ),
                                 Text(
                                   '${order.data!.outlet!.phone}',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
                                   ),
                                 ),
                                 Text(
                                   '${order.data!.outlet!.code}',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
                                   ),
                                 ),
@@ -132,31 +132,32 @@ class OrderHistoryPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(height: 20.0),
-                    Center(
+                    const SizedBox(height: 20.0),
+                    const Center(
                       child: Text(
                         'Order Details',
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     ListView.separated(
                       shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       separatorBuilder: (context, index) =>
-                          SizedBox(height: 14.0),
+                          const SizedBox(height: 14.0),
                       itemCount: order.data!.orders!.length,
                       itemBuilder: (context, index) {
                         final item = order.data!.orders![index];
                         return ListTile(
-                          shape: RoundedRectangleBorder(
+                          shape: const RoundedRectangleBorder(
                             side: BorderSide(color: Colors.black),
                           ),
                           leading: Image.network(
-                            Config.baseUrl + '/' + item.menu!.imageUrl!,
+                            '${Config.baseUrl}/${item.menu!.imageUrl!}',
                             width: 50.0,
                             height: 50.0,
                             fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) => Icon(
+                            errorBuilder: (context, error, stackTrace) =>
+                                const Icon(
                               Icons.error,
                             ),
                           ),
@@ -174,16 +175,17 @@ class OrderHistoryPage extends StatelessWidget {
                                 'Price: Rp. ${item.menu!.price} / each',
                               ),
                               Container(
-                                margin: EdgeInsets.symmetric(vertical: 8.0),
-                                padding: EdgeInsets.all(10.0),
-                                decoration: BoxDecoration(
+                                margin:
+                                    const EdgeInsets.symmetric(vertical: 8.0),
+                                padding: const EdgeInsets.all(10.0),
+                                decoration: const BoxDecoration(
                                   color: Colors.black,
                                 ),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
+                                    const Text(
                                       'Sum :',
                                       style: TextStyle(
                                         color: Colors.white,
@@ -191,7 +193,7 @@ class OrderHistoryPage extends StatelessWidget {
                                     ),
                                     Text(
                                       'Rp. ${item.menu!.price! * item.quantity!}',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.w700,
                                       ),
@@ -204,18 +206,18 @@ class OrderHistoryPage extends StatelessWidget {
                         );
                       },
                     ),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     Container(
-                      padding: EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(10.0),
                       width: double.infinity,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.black,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             'Total Price',
                             style: TextStyle(
                               color: Colors.white,
@@ -223,7 +225,7 @@ class OrderHistoryPage extends StatelessWidget {
                           ),
                           Text(
                             'Rp. ${order.data!.totalPrice}',
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 24.0,
                               fontWeight: FontWeight.w700,
@@ -237,7 +239,7 @@ class OrderHistoryPage extends StatelessWidget {
               ),
             );
           } else {
-            return Center(
+            return const Center(
               child: Text('No order found'),
             );
           }

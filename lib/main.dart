@@ -26,13 +26,13 @@ void main() {
           create: (_) => OrderProvider(),
         )
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   _MyAppState createState() => _MyAppState();
@@ -60,8 +60,8 @@ class _MyAppState extends State<MyApp> {
       title: 'Food Mo',
       debugShowCheckedModeBanner: false,
       routes: {
-        '/login': (context) => LoginPage(),
-        '/home': (context) => HomePage(),
+        '/login': (context) => const LoginPage(),
+        '/home': (context) => const HomePage(),
         '/order_detail': (context) => OrderHistoryPage(
               id: ModalRoute.of(context)!.settings.arguments as int,
             ),
@@ -88,7 +88,7 @@ class _MyAppState extends State<MyApp> {
           );
         },
       },
-      home: isLoggedIn ? HomePage() : LoginPage(),
+      home: isLoggedIn ? const HomePage() : const LoginPage(),
     );
   }
 }

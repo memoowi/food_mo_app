@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:food_mo/providers/auth_provider.dart';
 import 'package:food_mo/widgets/code_field_box.dart';
 import 'package:food_mo/widgets/hero_login.dart';
@@ -35,8 +33,8 @@ class _HomePageState extends State<HomePage> {
             HeroLogin(
               username: Provider.of<AuthProvider>(context).user?.name,
             ),
-            CodeFieldBox(),
-            OrderHistoryBox(),
+            const CodeFieldBox(),
+            const OrderHistoryBox(),
           ],
         ),
       ),
@@ -52,7 +50,7 @@ class _HomePageState extends State<HomePage> {
       actions: [
         IconButton(
           onPressed: () => logout(context),
-          icon: Icon(Icons.logout),
+          icon: const Icon(Icons.logout),
         )
       ],
     );
